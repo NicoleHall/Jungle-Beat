@@ -9,45 +9,42 @@ class JungleBeatTest < Minitest::Test
   end
 
   def test_a_new_Jungle_Beat_is_initialized_with_a_head
-    jb = JungleBeat.new(Node.new("Beep"))
+    jb = JungleBeat.new("Beep")
     assert_equal "Beep", jb.head.data
   end
 
-  def test_the_head_is_the_tail_on_a_Jungle_Beat_with_1_item
-    jb = JungleBeat.new(Node.new("Beep"))
-    assert_equal "Beep", jb.tail.data
-  end
-
   def test_it_can_append_a_new_node
-    jb = JungleBeat.new(Node.new("Beep"))
-    jb.append(Node.new("Bop"))
+    jb = JungleBeat.new("Beep")
+    assert_equal jb.append("Bop"), 1
     assert_equal "Bop", jb.tail.data
   end
 
   def test_it_can_append_two_new_nodes
+    jb = JungleBeat.new("Beep")
+    assert_equal jb.append("Bop Dee"), 2
+    assert_equal "Dee", jb.tail.data
+  end
+
+  def test_the_head_is_the_tail_on_a_Jungle_Beat_with_1_item
+    skip
     jb = JungleBeat.new(Node.new("Beep"))
-    jb.append(Node.new("Bop"))
-    jb.append(Node.new("Dub"))
-    assert_equal "Dub", jb.tail.data
+    assert_equal "Beep", jb.tail.data
   end
 
   def test_it_can_prepend_a_new_node
+    skip
     jb = JungleBeat.new(Node.new("Beep"))
     jb.prepend(Node.new("Dee"))
     assert_equal "Dee", jb.head.data
   end
 
   def test_it_can_prepend_and_append
+    skip
     jb = JungleBeat.new(Node.new("Beep"))
     jb.prepend(Node.new("Dee"))
     jb.append(Node.new("Zoop"))
     assert_equal "Zoop", jb.tail.data
     assert_equal "Dee", jb.head.data
-  end
-
-  def test_it_can_print_out_the_data_within_the_nodes
-    jb = JungleBeat.new(Node.new("Beep"))
-    assert_equal "Beep", jb.print_node_data
   end
 
 end

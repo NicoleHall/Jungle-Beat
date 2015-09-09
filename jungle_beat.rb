@@ -1,15 +1,19 @@
 class JungleBeat
   attr_accessor :head, :tail
 
-  def initialize(head)
-    @head = head
-    @tail = tail
-    #a brand new JungleBeat list will come with a @head.  A Node.new w/ its string argument must be passed in.  the list only contains one node upon initialize, so it is the head and the tail
+  def initialize(beats)
+    @head = Node.new(beats)
   end
 
-  def append(node)
-    @tail.next_node = node
-    @tail = @tail.next_node
+  def append(beats)
+    # Find the last node in the JungleBeat (let's call it tail)
+    # Assign "beat" to be that ^ node's next node (EG: tail.next_node = Node.new(beat))
+    # Return number of beats / nodes added (in this case: 1)
+    beats = beats.split # ["Bop", "Dee"]
+    beats.each do |beat|
+      tail.next_node = Node.new(beat)
+    end
+    beats.count
   end
 
   def prepend(prepend_node)
@@ -26,14 +30,6 @@ class JungleBeat
     current_node
   end
 
-  def print_node_data
-    current_node = @head
-    while current_node != nil
-      "#{current_node.data}"
-      current_node = current_node.next_node
-    end
-  end
-
 end
 
 class Node
@@ -45,8 +41,3 @@ class Node
     #a brand new node won't have a next_node
   end
 end
-
-jb = JungleBeat.new(Node.new("Beep"))
-puts jb.print_node_data
-require 'pry'
-binding.pry
