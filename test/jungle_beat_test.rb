@@ -106,9 +106,7 @@ class JungleBeatTest < Minitest::Test
     jb.append("ding, dah, oom, oom, ding, oom, oom, oom, ding, dah, oom, oom, ding, dah, oom, oom, ding, dah, oom, oom ")
     assert_equal 21, jb.count
     string_of_all_beats = jb.all
-    # require 'pry'
-    # binding.pry
-    assert_equal "`say -r 500 -v Boing Beep ding, dah, oom, oom, ding, oom, oom, oom, ding, dah, oom, oom, ding, dah, oom, oom, ding, dah, oom, oom` Played 21 sounds from beats.txt", jb.play
+    assert_equal "", jb.play
   end
 
 end

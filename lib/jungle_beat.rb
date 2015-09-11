@@ -90,10 +90,13 @@ class JungleBeat
   end
 
   def play
-    sound = `say -r 500 -v Boing '#{all}'`
+    command = `say -r 500 -v Boing #{all}`
+    sound = command
+    #sound = `say -r 500 -v Boing '#{all}'`
     played = "Played #{count} sounds from beats.txt"
     puts played
     sound
+
   end
 
   def insert(position, beat)
