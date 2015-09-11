@@ -89,18 +89,25 @@ class JungleBeat
     found.join
   end
 
-  # def insert(position, beat)
-  #   current_node = @head
-  #   counter = 0
-  #   while counter != position
-  #     current_node = current_node.next_node
-  #     counter += 1
-  #     if counter == position
-  #       current_node.next_node = Node.new(beat)
-  #     end
-  #   end
-  # end
+  def play
+    sound = `say -r 500 -v Boing '#{all}'`
+    played = "Played #{count} sounds from beats.txt"
+    puts played
+    sound
+  end
 
+  def insert(position, beat)
+    current_node = @head
+    counter = 1
+    while counter < position
+      current_node = current_node.next_node
+      counter += 1
+    end
+    new_node = Node.new(beat)
+    new_node.next_node = current_node.next_node
+    current_node.next_node = new_node
+    all
+  end
 end
 
 class Node
@@ -112,6 +119,3 @@ class Node
     #a brand new node won't have a next_node
   end
 end
-
-
-#input_filename  = ARGV[0]

@@ -93,22 +93,20 @@ class JungleBeatTest < Minitest::Test
     assert_equal "Beep", jb.find(0, 1)
   end
 
-  # def test_it_can_insert_one_node_at_position_2
-  #   jb = JungleBeat.new("Beep")
-  #   jb.append("Zee")
-  #   jb.append("Da")
-  #   jb.append("Blah")
-  #   assert_equal "Beep Zee Sing Da Blah", (jb.insert(2, "Sing"))
-  # end
+  def test_it_can_insert_node_at_position_2
+    jb = JungleBeat.new("Beep")
+    jb.append("Zee")
+    jb.append("Da")
+    jb.append("Blah")
+    assert_equal "Beep Zee Sing Da Blah", (jb.insert(2, "Sing"))
+  end
 
   def test_it_can_play
     jb = JungleBeat.new("Beep")
     jb.append("ding, dah, oom, oom, ding, oom, oom, oom, ding, dah, oom, oom, ding, dah, oom, oom, ding, dah, oom, oom ")
     assert_equal 21, jb.count
-    jb.play
-    "Played #{jb.count} sounds from `beats.txt`""
+    assert_equal "`say -r 500 -v Boing Beep ding, dah, oom, oom, ding, oom, oom, oom, ding, dah, oom, oom, ding, dah, oom, oom, ding, dah, oom, oom` Played 21 sounds from beats.txt", jb.play
   end
-
 
 end
 
