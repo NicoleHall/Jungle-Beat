@@ -8,7 +8,7 @@ input_file = File.open(input_file)
 lines = input_file.read
 
 
-static_jb = JungleBeat.new(nil)
+static_jb = JungleBeat.new("Doop")
 
 static_jb.append(lines)
 static_jb.play
